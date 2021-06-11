@@ -28,4 +28,5 @@
     "editor.formatOnSave": true
   },
   "eslint.packageManager": "yarn",
+  "stylelint.syntax": "css-in-js"
 }
