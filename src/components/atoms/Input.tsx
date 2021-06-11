@@ -9,7 +9,10 @@ type Props = (
       multiline?: false;
       row?: undefined;
     })
-  | (ComponentPropsWithRef<'textarea'> & { multiline: true; row?: number })
+  | (Omit<ComponentPropsWithRef<'textarea'>, 'rows' | 'cols'> & {
+      multiline: true;
+      row?: number;
+    })
 ) & {
   error?: boolean;
   size?: Size;
