@@ -1,20 +1,28 @@
-import { VFC, ClassAttributes, InputHTMLAttributes } from 'react';
-import { css } from '@emotion/react';
+import { VFC, ComponentPropsWithRef } from 'react';
+import { jsx, css } from '@emotion/react';
 
+type InputType = 'input' | 'textarea';
 type Size = 'sm' | 'md';
 
-type Props = ClassAttributes<HTMLInputElement> &
-  Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> & {
-    error?: boolean;
-    size?: Size;
-    fullWidth?: boolean;
-    label?: string;
-    helperText?: string;
-    startIcon?: boolean;
-    endIcon?: boolean;
-  };
+type Props = (
+  | (Omit<ComponentPropsWithRef<'input'>, 'size'> & {
+      multiline?: false;
+      row?: undefined;
+    })
+  | (ComponentPropsWithRef<'textarea'> & { multiline: true; row?: number })
+) & {
+  error?: boolean;
+  size?: Size;
+  fullWidth?: boolean;
+  label?: string;
+  helperText?: string;
+  startIcon?: boolean;
+  endIcon?: boolean;
+};
 
 const Input: VFC<Props> = ({
+  multiline = false,
+  row = multiline ? 4 : undefined,
   error = false,
   size = 'md',
   fullWidth = false,
@@ -25,22 +33,44 @@ const Input: VFC<Props> = ({
   startIcon = false,
   endIcon = false,
   value,
+  ...props
 }) => {
+  const input = 'input';
+  const textArea = 'textarea';
+
   return (
     <label css={[inputLabelBase, error && inputLabelError]}>
       <span css={labelText}>{label}</span>
-      <input
-        css={[
-          inputBase,
-          error && inputError,
-          inputSize(size),
-          fullWidth && inputFullWidth,
-        ]}
-        type="text"
-        placeholder={placeholder}
-        disabled={disabled}
-        value={value}
-      />
+      {multiline
+        ? jsx(
+            textArea,
+            {
+              css: [
+                inputBase(textArea),
+                error && inputError,
+                inputSize(textArea, size),
+                fullWidth && inputFullWidth,
+              ],
+              rows: row,
+              placeholder: placeholder,
+              disabled: disabled,
+              ...props,
+            },
+            value
+          )
+        : jsx(input, {
+            css: [
+              inputBase(input),
+              error && inputError,
+              inputSize(input, size),
+              fullWidth && inputFullWidth,
+            ],
+            type: 'text',
+            placeholder: placeholder,
+            disabled: disabled,
+            value: value,
+            ...props,
+          })}
       {helperText && (
         <span css={[helperTextBase, error && helperTextError]}>
           {helperText}
@@ -72,6 +102,10 @@ const inputLabelBase = css`
   pointer-events: none;
   transition: color 0.3s;
 
+  &:hover {
+    color: ${styleMap.colors.action.hover};
+  }
+
   &:focus-within {
     color: ${styleMap.colors.primary};
   }
@@ -79,10 +113,6 @@ const inputLabelBase = css`
 
 const inputLabelError = css`
   color: ${styleMap.colors.error};
-
-  &:hover {
-    color: ${styleMap.colors.action};
-  }
 
   &:focus-within {
     color: ${styleMap.colors.error};
@@ -100,34 +130,36 @@ const labelText = css`
   pointer-events: auto;
 `;
 
-const inputBase = css`
-  box-sizing: border-box;
-  padding-left: 12px;
-  font-family: 'Noto Sans JP', sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 20px;
-  color: ${styleMap.colors.text.primary};
-  pointer-events: auto;
-  border: 1px solid ${styleMap.colors.default};
-  border-radius: 8px;
-  outline: none;
-  transition: border 0.3s;
+const inputBase = (inputType: InputType) => {
+  return css`
+    box-sizing: border-box;
+    padding: ${inputType === 'input' ? '0 12px' : '16px 12px'};
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    color: ${styleMap.colors.text.primary};
+    pointer-events: auto;
+    border: 1px solid ${styleMap.colors.default};
+    border-radius: 8px;
+    outline: none;
+    transition: border 0.3s;
 
-  &:hover {
-    border: 1px solid ${styleMap.colors.action};
-  }
-  &:focus {
-    border: 1px solid ${styleMap.colors.primary};
-  }
-  &::placeholder {
-    color: ${styleMap.colors.text.caption};
-  }
-  &:disabled {
-    background-color: ${styleMap.colors.action.disabledBackground};
-    border: 1px solid ${styleMap.colors.action.disabled};
-  }
-`;
+    &:hover {
+      border: 1px solid ${styleMap.colors.action.hover};
+    }
+    &:focus {
+      border: 1px solid ${styleMap.colors.primary};
+    }
+    &::placeholder {
+      color: ${styleMap.colors.text.caption};
+    }
+    &:disabled {
+      background-color: ${styleMap.colors.action.disabledBackground};
+      border: 1px solid ${styleMap.colors.action.disabled};
+    }
+  `;
+};
 
 const inputError = css`
   border: 1px solid ${styleMap.colors.error};
@@ -136,7 +168,15 @@ const inputError = css`
   }
 `;
 
-const inputSize = (size: Size) => {
+const inputSize = (inputType: InputType, size: Size) => {
+  if (inputType === 'textarea') {
+    return css`
+      width: 200px;
+      resize: none;
+    `;
+  }
+
+  // input
   if (size === 'sm') {
     return css`
       width: 200px;
