@@ -6,7 +6,8 @@ import { PermIdentity } from '@emotion-icons/material-rounded/PermIdentity';
 import { PhoneEnabled } from '@emotion-icons/material-rounded/PhoneEnabled';
 import { Lock } from '@emotion-icons/material-rounded/Lock';
 
-type InputType = 'input' | 'textarea';
+type InputType = 'text' | 'email' | 'password' | 'search' | 'tel' | 'url';
+type InputElement = 'input' | 'textarea';
 type Size = 'sm' | 'md';
 type Color = 'primary' | 'secondary';
 type IconPosition = 'start' | 'end';
@@ -41,6 +42,7 @@ type InputProps = (
       row?: number;
     })
 ) & {
+  type?: InputType;
   error?: boolean;
   size?: Size;
   fullWidth?: boolean;
@@ -52,6 +54,7 @@ type InputProps = (
 };
 
 const Input: VFC<InputProps> = ({
+  type = 'text',
   multiline = false,
   row = multiline ? 4 : undefined,
   error = false,
@@ -69,16 +72,16 @@ const Input: VFC<InputProps> = ({
 }) => {
   const input = 'input';
   const textArea = 'textarea';
-  const inputType = multiline ? textArea : input;
+  const inputElement = multiline ? textArea : input;
 
   return (
     <label css={[inputLabelBase(color), error && inputLabelError]}>
       <span css={labelText}>{label}</span>
       <div
         css={[
-          inputControlBase(inputType, color, disabled),
+          inputControlBase(inputElement, color, disabled),
           error && inputControlError,
-          inputControlSize(inputType, size),
+          inputControlSize(inputElement, size),
           fullWidth && inputControlFullWidth,
         ]}
       >
@@ -97,7 +100,7 @@ const Input: VFC<InputProps> = ({
             )
           : jsx(input, {
               css: inputBase,
-              type: 'text',
+              type: type,
               placeholder: placeholder,
               disabled: disabled,
               value: value,
@@ -168,14 +171,14 @@ const labelText = css`
 `;
 
 const inputControlBase = (
-  inputType: InputType,
+  inputElement: InputElement,
   color: Color,
   disabled: boolean
 ) => {
   return css`
     display: flex;
     align-items: center;
-    padding: ${inputType === 'input' ? '0 12px' : '16px 12px'};
+    padding: ${inputElement === 'input' ? '0 12px' : '16px 12px'};
     background-color: ${disabled
       ? styleMap.colors.action.disabledBackground
       : '#FFF'};
@@ -203,8 +206,8 @@ const inputControlError = css`
   }
 `;
 
-const inputControlSize = (inputType: InputType, size: Size) => {
-  if (inputType === 'textarea') {
+const inputControlSize = (inputElement: InputElement, size: Size) => {
+  if (inputElement === 'textarea') {
     return css`
       width: 200px;
       resize: none;

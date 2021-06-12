@@ -94,7 +94,7 @@ const Home = () => {
             <div css={inputRow(2)}>
               <ComponentBox
                 title='<Input value="Text" />'
-                component={<Input value="Text" />}
+                component={<Input value="Text" onChange={() => {}} />}
               />
               <ComponentBox
                 title="<Input multiline row={4} />"
