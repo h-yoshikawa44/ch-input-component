@@ -2,6 +2,7 @@ import { FC } from 'react';
 import Head from 'next/head';
 import { css } from '@emotion/react';
 import SideBar from '@/components/organisms/SideBar';
+import Footer from '@/components/organisms/Footer';
 
 const Layout: FC = ({ children }) => {
   return (
@@ -16,7 +17,10 @@ const Layout: FC = ({ children }) => {
       </Head>
       <div css={container}>
         <SideBar />
-        {children}
+        <div>
+          {children}
+          <Footer />
+        </div>
       </div>
     </div>
   );
