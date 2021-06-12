@@ -12,10 +12,10 @@
       Demo
     </a>
     <span> | </span>
-    <!-- <a href="https://{your-url-to-the-solution}">
+    <a href="https://devchallenges.io/solutions/ClokxKDirrSdDyCt8D0D">
       Solution
     </a>
-    <span> | </span> -->
+    <span> | </span>
     <a href="https://devchallenges.io/challenges/TSqutYM4c5WtluM7QzGp">
       Challenge
     </a>
@@ -41,7 +41,7 @@
 
 ![overview](/screenshot/overview.png)
 
-We have created an Input component that contains a label.
+I have created an Input component that contains a label.
 Since it was created as a component for text input, the type of input element is limited to text format.
 
 ### Built With
