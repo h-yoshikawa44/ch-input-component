@@ -1,11 +1,37 @@
 import { VFC, ComponentPropsWithRef } from 'react';
 import { jsx, css } from '@emotion/react';
+import { Home } from '@emotion-icons/material-rounded/Home';
+import { Mail } from '@emotion-icons/material-rounded/Mail';
+import { PermIdentity } from '@emotion-icons/material-rounded/PermIdentity';
+import { PhoneEnabled } from '@emotion-icons/material-rounded/PhoneEnabled';
+import { Lock } from '@emotion-icons/material-rounded/Lock';
 
 type InputType = 'input' | 'textarea';
 type Size = 'sm' | 'md';
+type IconPosition = 'start' | 'end';
+type IconName = 'phone' | 'mail' | 'lock' | 'identity' | 'home';
 
-type Props = (
-  | (Omit<ComponentPropsWithRef<'input'>, 'size'> & {
+type IconProps = {
+  iconName: IconName;
+  position: IconPosition;
+};
+
+const Icon: VFC<IconProps> = ({ iconName, position }) => {
+  const size = 16;
+
+  return (
+    <span css={icon(position)}>
+      {iconName === 'phone' && <PhoneEnabled size={size} />}
+      {iconName === 'mail' && <Mail size={size} />}
+      {iconName === 'lock' && <Lock size={size} />}
+      {iconName === 'identity' && <PermIdentity size={size} />}
+      {iconName === 'home' && <Home size={size} />}
+    </span>
+  );
+};
+
+type InputProps = (
+  | (Omit<ComponentPropsWithRef<'input'>, 'size' | 'type'> & {
       multiline?: false;
       row?: undefined;
     })
@@ -19,11 +45,11 @@ type Props = (
   fullWidth?: boolean;
   label?: string;
   helperText?: string;
-  startIcon?: boolean;
-  endIcon?: boolean;
+  startIcon?: IconName;
+  endIcon?: IconName;
 };
 
-const Input: VFC<Props> = ({
+const Input: VFC<InputProps> = ({
   multiline = false,
   row = multiline ? 4 : undefined,
   error = false,
@@ -33,47 +59,49 @@ const Input: VFC<Props> = ({
   placeholder = 'Placeholder',
   helperText,
   disabled = false,
-  startIcon = false,
-  endIcon = false,
+  startIcon,
+  endIcon,
   value,
   ...props
 }) => {
   const input = 'input';
   const textArea = 'textarea';
+  const inputType = multiline ? textArea : input;
 
   return (
     <label css={[inputLabelBase, error && inputLabelError]}>
       <span css={labelText}>{label}</span>
-      {multiline
-        ? jsx(
-            textArea,
-            {
-              css: [
-                inputBase(textArea),
-                error && inputError,
-                inputSize(textArea, size),
-                fullWidth && inputFullWidth,
-              ],
-              rows: row,
+      <div
+        css={[
+          inputControlBase(inputType, disabled),
+          error && inputControlError,
+          inputControlSize(inputType, size),
+          fullWidth && inputControlFullWidth,
+        ]}
+      >
+        {startIcon && <Icon iconName={startIcon} position="start" />}
+        {multiline
+          ? jsx(
+              textArea,
+              {
+                css: inputBase,
+                rows: row,
+                placeholder: placeholder,
+                disabled: disabled,
+                ...props,
+              },
+              value
+            )
+          : jsx(input, {
+              css: inputBase,
+              type: 'text',
               placeholder: placeholder,
               disabled: disabled,
+              value: value,
               ...props,
-            },
-            value
-          )
-        : jsx(input, {
-            css: [
-              inputBase(input),
-              error && inputError,
-              inputSize(input, size),
-              fullWidth && inputFullWidth,
-            ],
-            type: 'text',
-            placeholder: placeholder,
-            disabled: disabled,
-            value: value,
-            ...props,
-          })}
+            })}
+        {endIcon && <Icon iconName={endIcon} position="end" />}
+      </div>
       {helperText && (
         <span css={[helperTextBase, error && helperTextError]}>
           {helperText}
@@ -133,45 +161,39 @@ const labelText = css`
   pointer-events: auto;
 `;
 
-const inputBase = (inputType: InputType) => {
+const inputControlBase = (inputType: InputType, disabled: boolean) => {
   return css`
-    box-sizing: border-box;
+    display: flex;
+    align-items: center;
     padding: ${inputType === 'input' ? '0 12px' : '16px 12px'};
-    font-family: 'Noto Sans JP', sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 20px;
-    color: ${styleMap.colors.text.primary};
-    pointer-events: auto;
-    border: 1px solid ${styleMap.colors.default};
+    background-color: ${disabled
+      ? styleMap.colors.action.disabledBackground
+      : '#FFF'};
+    border: ${disabled
+      ? ` 1px solid ${styleMap.colors.action.disabled}`
+      : ` 1px solid ${styleMap.colors.default}`};
     border-radius: 8px;
-    outline: none;
     transition: border 0.3s;
 
     &:hover {
-      border: 1px solid ${styleMap.colors.action.hover};
+      border: ${disabled
+        ? ` 1px solid ${styleMap.colors.action.disabled}`
+        : ` 1px solid ${styleMap.colors.action.hover}`};
     }
-    &:focus {
+    &:focus-within {
       border: 1px solid ${styleMap.colors.primary};
-    }
-    &::placeholder {
-      color: ${styleMap.colors.text.caption};
-    }
-    &:disabled {
-      background-color: ${styleMap.colors.action.disabledBackground};
-      border: 1px solid ${styleMap.colors.action.disabled};
     }
   `;
 };
 
-const inputError = css`
+const inputControlError = css`
   border: 1px solid ${styleMap.colors.error};
-  &:focus {
+  &:focus-within {
     border: 1px solid ${styleMap.colors.error};
   }
 `;
 
-const inputSize = (inputType: InputType, size: Size) => {
+const inputControlSize = (inputType: InputType, size: Size) => {
   if (inputType === 'textarea') {
     return css`
       width: 200px;
@@ -194,8 +216,42 @@ const inputSize = (inputType: InputType, size: Size) => {
   }
 };
 
-const inputFullWidth = css`
+const inputControlFullWidth = css`
   width: 100%;
+`;
+
+const icon = (position: IconPosition) => {
+  if (position === 'start') {
+    return css`
+      display: flex;
+      padding-right: 12px;
+      color: ${styleMap.colors.text.caption};
+    `;
+  }
+  if (position === 'end') {
+    return css`
+      display: flex;
+      padding-left: 12px;
+      color: ${styleMap.colors.text.caption};
+    `;
+  }
+};
+
+const inputBase = css`
+  width: 100%;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  color: ${styleMap.colors.text.primary};
+  pointer-events: auto;
+  resize: none;
+  border: none;
+  outline: none;
+
+  &::placeholder {
+    color: ${styleMap.colors.text.caption};
+  }
 `;
 
 const helperTextBase = css`
