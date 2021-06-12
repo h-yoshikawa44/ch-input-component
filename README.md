@@ -39,7 +39,7 @@
 
 ## Overview
 
-![overview](/screenshot/overview.png)
+![overview](/screenshots/overview.png)
 
 I have created an Input component that contains a label.
 Since it was created as a component for text input, the type of input element is limited to text format.
