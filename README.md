@@ -8,10 +8,10 @@
 
 <div align="center">
   <h3>
-    <!-- <a href="https://{your-demo-link.your-domain}">
+    <a href="https://input-component-h-yoshikawa44.vercel.app/">
       Demo
     </a>
-    <span> | </span> -->
+    <span> | </span>
     <!-- <a href="https://{your-url-to-the-solution}">
       Solution
     </a>
@@ -31,6 +31,7 @@
   - [Built With](#built-with)
 - [Features](#features)
 - [How To Use](#how-to-use)
+- [learned/improved](#learnedimproved)
 - [Acknowledgements](#acknowledgements)
 - [Contact](#contact)
 
@@ -38,8 +39,10 @@
 
 ## Overview
 
-<!-- ![overview](/screenshot/overview.png) -->
-(※in preparation)
+![overview](/screenshot/overview.png)
+
+We have created an Input component that contains a label.
+Since it was created as a component for text input, the type of input element is limited to text format.
 
 ### Built With
 
@@ -53,6 +56,7 @@ Base
 
 Other major libraries
 - [emotion](https://emotion.sh/)
+- [emotion-icons](https://emotion-icons.dev/)
 
 ## Features
 
@@ -60,17 +64,46 @@ Other major libraries
 
 This application/site was created as a submission to a [DevChallenges](https://devchallenges.io/challenges) challenge. The [challenge](https://devchallenges.io/challenges/TSqutYM4c5WtluM7QzGp) was to build an application to complete the given user stories.
 
-- [ ] User story: I can see error state
-- [ ] User story: I can choose to disable input
-- [ ] User story: I can choose to have helper text
-- [ ] User story: I can choose to have an icon on the left or right (Use Google Icon and at least 5 variants)
-- [ ] User story: I can have different input sizes
-- [ ] User story: I can have different colors
-- [ ] User story: I can choose to have input take the width of the parent
-- [ ] User story: I can have multiline input like a textarea
-- [ ] User story: When I hover or focus, I can see visual indicators
-- [ ] User story: I can still access all input attributes
-- [ ] User story (optional): Show input in a similar way like the design or use Storybook. Otherwise, showing the input in multiple states is enough
+- [x] User story: I can see error state
+- [x] User story: I can choose to disable input
+- [x] User story: I can choose to have helper text
+- [x] User story: I can choose to have an icon on the left or right (Use Google Icon and at least 5 variants)
+- [x] User story: I can have different input sizes
+- [x] User story: I can have different colors
+- [x] User story: I can choose to have input take the width of the parent
+- [x] User story: I can have multiline input like a textarea
+- [x] User story: When I hover or focus, I can see visual indicators
+- [ ] User story: I can still access all input attributes → ※1
+- [x] User story (optional): Show input in a similar way like the design or use Storybook. Otherwise, showing the input in multiple states is enough
+
+※1：  
+excluded some props whose settings conflict with custom props.
+Also, Since it was created as a component for text input, the type of input element is limited to text format.
+```tsx
+// Input Component
+type InputType = 'text' | 'email' | 'password' | 'search' | 'tel' | 'url';
+
+type InputProps = (
+  | (Omit<ComponentPropsWithRef<'input'>, 'size' | 'type'> & {
+      multiline?: false;
+      row?: undefined;
+    })
+  | (Omit<ComponentPropsWithRef<'textarea'>, 'rows' | 'cols'> & {
+      multiline: true;
+      row?: number;
+    })
+) & {
+  type?: InputType;
+  error?: boolean;
+  size?: Size;
+  fullWidth?: boolean;
+  color?: Color;
+  label?: string;
+  helperText?: string;
+  startIcon?: IconName;
+  endIcon?: IconName;
+};
+```
 
 ## How To Use
 
@@ -91,11 +124,21 @@ $ yarn install
 $ yarn dev
 ```
 
+## learned/improved
+- `ComponentPropsWithRef` makes it easy to get prop type information for existing elements such as `input`.
+- How to style a parent element when the child element has focus.
+- How to make the hover of the parent element work when the child element is hovered.
+- Types of css pseudo-classes that I was only partially aware of so far.
+- How to create an input component with an icon inside.
+
 ## Acknowledgements
 
 <!-- This section should list any articles or add-ons/plugins that helps you to complete the project. This is optional but it will help you in the future. For exmpale -->
 
-(※in preparation)
+- [Material UI](https://material-ui.com/)
+- [実践プロトタイピング Wevフロントエンド&バックエンドでプロトタイピング ※書籍](https://tk-rabbit-house.booth.pm/items/2381995)
+- [CSS疑似クラスを活用した、モダンでインタラクティブなフォームの作り方](https://ics.media/entry/200413/)
+- [子要素にhoverやclickがあったときに親要素に反応させたい](https://www.softel.co.jp/blogs/tech/archives/6008)
 
 ## Contact
 
