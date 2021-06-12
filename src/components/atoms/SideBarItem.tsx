@@ -1,7 +1,7 @@
-import { VFC } from 'react';
+import { VFC, ComponentPropsWithRef } from 'react';
 import { css } from '@emotion/react';
 
-type Props = {
+type Props = ComponentPropsWithRef<'li'> & {
   text: string;
   selected?: boolean;
 };
