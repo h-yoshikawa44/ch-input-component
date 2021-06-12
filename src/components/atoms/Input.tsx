@@ -8,6 +8,7 @@ import { Lock } from '@emotion-icons/material-rounded/Lock';
 
 type InputType = 'input' | 'textarea';
 type Size = 'sm' | 'md';
+type Color = 'primary' | 'secondary';
 type IconPosition = 'start' | 'end';
 type IconName = 'phone' | 'mail' | 'lock' | 'identity' | 'home';
 
@@ -43,6 +44,7 @@ type InputProps = (
   error?: boolean;
   size?: Size;
   fullWidth?: boolean;
+  color?: Color;
   label?: string;
   helperText?: string;
   startIcon?: IconName;
@@ -55,6 +57,7 @@ const Input: VFC<InputProps> = ({
   error = false,
   size = 'md',
   fullWidth = false,
+  color = 'primary',
   label = 'Label',
   placeholder = 'Placeholder',
   helperText,
@@ -69,11 +72,11 @@ const Input: VFC<InputProps> = ({
   const inputType = multiline ? textArea : input;
 
   return (
-    <label css={[inputLabelBase, error && inputLabelError]}>
+    <label css={[inputLabelBase(color), error && inputLabelError]}>
       <span css={labelText}>{label}</span>
       <div
         css={[
-          inputControlBase(inputType, disabled),
+          inputControlBase(inputType, color, disabled),
           error && inputControlError,
           inputControlSize(inputType, size),
           fullWidth && inputControlFullWidth,
@@ -120,6 +123,7 @@ const styleMap = {
       disabledBackground: '#f2f2f2',
     },
     primary: '#2962FF',
+    secondary: '#19be35',
     error: '#D32F2F',
     text: {
       primary: '#333333',
@@ -128,19 +132,21 @@ const styleMap = {
   },
 };
 
-const inputLabelBase = css`
-  color: ${styleMap.colors.text.primary};
-  pointer-events: none;
-  transition: color 0.3s;
+const inputLabelBase = (color: Color) => {
+  return css`
+    color: ${styleMap.colors.text.primary};
+    pointer-events: none;
+    transition: color 0.3s;
 
-  &:hover {
-    color: ${styleMap.colors.action.hover};
-  }
+    &:hover {
+      color: ${styleMap.colors.action.hover};
+    }
 
-  &:focus-within {
-    color: ${styleMap.colors.primary};
-  }
-`;
+    &:focus-within {
+      color: ${styleMap.colors[color]};
+    }
+  `;
+};
 
 const inputLabelError = css`
   color: ${styleMap.colors.error};
@@ -161,7 +167,11 @@ const labelText = css`
   pointer-events: auto;
 `;
 
-const inputControlBase = (inputType: InputType, disabled: boolean) => {
+const inputControlBase = (
+  inputType: InputType,
+  color: Color,
+  disabled: boolean
+) => {
   return css`
     display: flex;
     align-items: center;
@@ -181,7 +191,7 @@ const inputControlBase = (inputType: InputType, disabled: boolean) => {
         : ` 1px solid ${styleMap.colors.action.hover}`};
     }
     &:focus-within {
-      border: 1px solid ${styleMap.colors.primary};
+      border: 1px solid ${styleMap.colors[color]};
     }
   `;
 };
