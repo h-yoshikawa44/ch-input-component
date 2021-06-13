@@ -41,7 +41,7 @@
 
 ![overview](/screenshots/overview.png)
 
-I have created an Input component that contains a label.
+I have created an Input component that contains a label.  
 Since it was created as a component for text input, the type of input element is limited to text format.
 
 ### Built With
@@ -77,7 +77,7 @@ This application/site was created as a submission to a [DevChallenges](https://d
 - [x] User story (optional): Show input in a similar way like the design or use Storybook. Otherwise, showing the input in multiple states is enough
 
 ※1：  
-excluded some props whose settings conflict with custom props.
+excluded some props whose settings conflict with custom props.  
 Also, Since it was created as a component for text input, the type of input element is limited to text format.
 ```tsx
 // Input Component
