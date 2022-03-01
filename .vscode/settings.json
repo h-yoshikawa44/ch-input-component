@@ -10,7 +10,7 @@
   "editor.formatOnSave": false,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[graphql]": {
-      "editor.formatOnSave": true
+    "editor.formatOnSave": true
   },
   "[javascript]": {
     "editor.formatOnSave": true
@@ -22,11 +22,11 @@
     "editor.formatOnSave": true
   },
   "[typescript]": {
-      "editor.formatOnSave": true
+    "editor.formatOnSave": true
   },
   "[typescriptreact]": {
     "editor.formatOnSave": true
   },
   "eslint.packageManager": "yarn",
-  "stylelint.syntax": "css-in-js"
+  "stylelint.validate": ["css", "typescript", "typescriptreact"]
 }
