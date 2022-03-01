@@ -1,6 +1,5 @@
 import { VFC, ComponentPropsWithRef } from 'react';
 import { css } from '@emotion/react';
-import SubTitle from '@/components/atoms/SubTitle';
 
 type Props = ComponentPropsWithRef<'div'> & {
   title: string;
@@ -10,14 +9,19 @@ type Props = ComponentPropsWithRef<'div'> & {
 const ComponentBox: VFC<Props> = ({ title, component }) => {
   return (
     <div>
-      <SubTitle css={customSubTitle}>{title}</SubTitle>
+      <h6 css={subTitle}>{title}</h6>
       {component}
     </div>
   );
 };
 
-const customSubTitle = css`
-  padding-bottom: 16px; ;
+const subTitle = css`
+  font-family: 'Ubuntu Mono', sans-serif;
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 12px;
+  margin-block-start: 0;
+  margin-block-end: 16px;
 `;
 
 export default ComponentBox;

@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import SideBarItem from '@/components/atoms/SideBarItem';
+import SideBarItem from '@/components/common/SideBarItem';
 
 const SideBar = () => {
   return (

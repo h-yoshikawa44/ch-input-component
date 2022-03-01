@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import Head from 'next/head';
 import { css } from '@emotion/react';
-import SideBar from '@/components/organisms/SideBar';
-import Footer from '@/components/organisms/Footer';
+import SideBar from '@/components/common/SideBar';
+import Footer from '@/components/common/Footer';
 
 const Layout: FC = ({ children }) => {
   return (
