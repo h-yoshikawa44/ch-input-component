@@ -1,3 +1,18 @@
+// ブレイクポイント
+const xs = 0;
+const sm = 600;
+const md = 960;
+const lg = 1280;
+const xl = 1920;
+
+export const breakPoint = {
+  xs,
+  sm,
+  md,
+  lg,
+  xl,
+};
+
 // フォント
 const ubuntuMono = 'Ubuntu Mono, sans-serif';
 const montserrat = 'Montserrat, sans-serif';

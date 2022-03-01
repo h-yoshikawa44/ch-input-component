@@ -30,6 +30,7 @@ const siteTitle = css`
   font-size: 13px;
   font-weight: 600;
   line-height: 19px;
+
   span {
     color: ${colors.orange};
   }

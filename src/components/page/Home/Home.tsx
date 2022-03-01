@@ -2,11 +2,11 @@ import { VFC } from 'react';
 import { css } from '@emotion/react';
 import ComponentBox from '@/components/common/ComponentBox';
 import Input from '@/components/common/Input';
-import { fonts, colors } from '@/styles/constants';
+import { breakPoint, fonts, colors } from '@/styles/constants';
 
 const Home: VFC = () => {
   return (
-    <main>
+    <main css={main}>
       <div css={container}>
         <h2 css={pageTitle}>Inputs</h2>
         <div css={inputRows}>
@@ -104,8 +104,14 @@ const Home: VFC = () => {
   );
 };
 
+const main = css`
+  margin: 56px 0;
+`;
+
 const container = css`
-  padding: 56px 80px 56px 80px;
+  max-width: 1280px;
+  padding: 0 8%;
+  margin-right: auto;
 `;
 
 const pageTitle = css`
@@ -128,6 +134,10 @@ const inputRow = (column: number) => {
     grid-template-columns: repeat(${column}, max-content);
     grid-row-gap: 45px;
     grid-column-gap: 64px;
+
+    @media (max-width: ${breakPoint.md - 1}px) {
+      grid-template-columns: repeat(auto-fill, minmax(200px, max-content));
+    }
   `;
 };
 

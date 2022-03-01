@@ -202,6 +202,7 @@ const inputControlBase = (
 
 const inputControlError = css`
   border: 1px solid ${styleMap.colors.error};
+
   &:focus-within {
     border: 1px solid ${styleMap.colors.error};
   }
