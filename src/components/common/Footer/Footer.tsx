@@ -1,6 +1,7 @@
 import { VFC } from 'react';
 import Image from 'next/image';
 import { css } from '@emotion/react';
+import { colors, fonts } from '@/styles/constants';
 
 const Footer: VFC = () => {
   return (
@@ -29,11 +30,11 @@ const footer = css`
   justify-content: center;
   width: 100%;
   height: 100px;
-  border-top: 1px solid #eaeaea;
+  border-top: 1px solid ${colors.whiteDarken};
 `;
 
 const footerText = css`
-  font-family: Montserrat, sans-serif;
+  font-family: ${fonts.montserrat};
   font-size: 14px;
   font-weight: 500;
   line-height: 17px;

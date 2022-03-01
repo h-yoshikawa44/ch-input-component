@@ -2,6 +2,7 @@ import { VFC } from 'react';
 import { css } from '@emotion/react';
 import ComponentBox from '@/components/common/ComponentBox';
 import Input from '@/components/common/Input';
+import { fonts, colors } from '@/styles/constants';
 
 const Home: VFC = () => {
   return (
@@ -108,11 +109,11 @@ const container = css`
 `;
 
 const pageTitle = css`
-  font-family: 'Poppins', sans-serif;
+  font-family: ${fonts.poppins};
   font-size: 24px;
   font-weight: 500;
   line-height: 36px;
-  color: #4f4f4f;
+  color: ${colors.blackLighten};
 `;
 
 const inputRows = css`
