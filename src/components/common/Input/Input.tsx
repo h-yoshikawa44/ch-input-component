@@ -5,6 +5,7 @@ import { Mail } from '@emotion-icons/material-rounded/Mail';
 import { PermIdentity } from '@emotion-icons/material-rounded/PermIdentity';
 import { PhoneEnabled } from '@emotion-icons/material-rounded/PhoneEnabled';
 import { Lock } from '@emotion-icons/material-rounded/Lock';
+import { fonts, colors } from '@/styles/constants';
 
 type InputType = 'text' | 'email' | 'password' | 'search' | 'tel' | 'url';
 type InputElement = 'input' | 'textarea';
@@ -119,18 +120,18 @@ const Input: VFC<InputProps> = ({
 
 const styleMap = {
   colors: {
-    default: '#828282',
+    default: colors.base,
     action: {
-      hover: '#333333',
-      disabled: '#e0e0e0',
-      disabledBackground: '#f2f2f2',
+      hover: colors.action.hover,
+      disabled: colors.action.disabled,
+      disabledBackground: colors.action.disabledBackground,
     },
-    primary: '#2962FF',
-    secondary: '#19be35',
-    error: '#D32F2F',
+    primary: colors.primary,
+    secondary: colors.secondary,
+    error: colors.error,
     text: {
-      primary: '#333333',
-      caption: '#828282',
+      primary: colors.text.primary,
+      caption: colors.text.caption,
     },
   },
 };
@@ -162,7 +163,7 @@ const inputLabelError = css`
 const labelText = css`
   display: block;
   padding-bottom: 4px;
-  font-family: 'Noto Sans Jp', sans-serif;
+  font-family: ${fonts.notoSansJp};
   font-size: 12px;
   font-weight: normal;
   line-height: 17px;
@@ -181,7 +182,7 @@ const inputControlBase = (
     padding: ${inputElement === 'input' ? '0 12px' : '16px 12px'};
     background-color: ${disabled
       ? styleMap.colors.action.disabledBackground
-      : '#FFF'};
+      : colors.white};
     border: ${disabled
       ? ` 1px solid ${styleMap.colors.action.disabled}`
       : ` 1px solid ${styleMap.colors.default}`};
@@ -201,6 +202,7 @@ const inputControlBase = (
 
 const inputControlError = css`
   border: 1px solid ${styleMap.colors.error};
+
   &:focus-within {
     border: 1px solid ${styleMap.colors.error};
   }
@@ -252,7 +254,7 @@ const icon = (position: IconPosition) => {
 
 const inputBase = css`
   width: 100%;
-  font-family: 'Noto Sans JP', sans-serif;
+  font-family: ${fonts.notoSansJp};
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
@@ -270,7 +272,7 @@ const inputBase = css`
 const helperTextBase = css`
   display: block;
   padding-top: 4px;
-  font-family: 'Noto Sans Jp', sans-serif;
+  font-family: ${fonts.notoSansJp};
   font-size: 10px;
   font-weight: normal;
   line-height: 14px;

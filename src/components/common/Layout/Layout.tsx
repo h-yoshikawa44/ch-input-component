@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import Head from 'next/head';
 import { css } from '@emotion/react';
-import SideBar from '@/components/organisms/SideBar';
-import Footer from '@/components/organisms/Footer';
+import SideBar from '@/components/common/SideBar';
+import Footer from '@/components/common/Footer';
 
 const Layout: FC = ({ children }) => {
   return (
@@ -15,10 +15,10 @@ const Layout: FC = ({ children }) => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div css={container}>
+      <div css={globalLayout}>
         <SideBar />
-        <div>
-          {children}
+        <div css={rightBlock}>
+          <div css={contents}>{children}</div>
           <Footer />
         </div>
       </div>
@@ -26,8 +26,19 @@ const Layout: FC = ({ children }) => {
   );
 };
 
-const container = css`
+const globalLayout = css`
+  display: grid;
+  grid-template-columns: 200px 1fr;
+`;
+
+const rightBlock = css`
   display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+`;
+
+const contents = css`
+  flex: 1 0 auto;
 `;
 
 export default Layout;

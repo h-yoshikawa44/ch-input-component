@@ -1,5 +1,6 @@
 import { VFC, ComponentPropsWithRef } from 'react';
 import { css } from '@emotion/react';
+import { fonts, colors } from '@/styles/constants';
 
 type Props = ComponentPropsWithRef<'li'> & {
   text: string;
@@ -13,11 +14,11 @@ const SideBarItem: VFC<Props> = ({ text, selected = false }) => {
 const sideBarItem = (selected: boolean) => {
   return css`
     padding-bottom: 32px;
-    font-family: 'Noto Sans JP', sans-serif;
+    font-family: ${fonts.notoSansJp};
     font-size: 14px;
     font-weight: ${selected ? 'bold' : '500'};
     line-height: 20px;
-    color: ${selected ? '#090f31' : '#9e9e9e'};
+    color: ${selected ? colors.action.selected : colors.gray};
     list-style: none;
   `;
 };
