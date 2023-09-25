@@ -9,7 +9,7 @@ const Home = () => {
         <title>Input component</title>
         <meta
           name="description"
-          content="devChallenges.io - Input component | by h-yoshikawa44"
+          content="devChallenges.io(legacy) - Input component | by h-yoshikawa44"
         />
       </Head>
       <HomePage />
