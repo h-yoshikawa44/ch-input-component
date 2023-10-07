@@ -13,19 +13,6 @@ export const breakPoint = {
   xl,
 };
 
-// フォント
-const ubuntuMono = 'Ubuntu Mono, sans-serif';
-const montserrat = 'Montserrat, sans-serif';
-const notoSansJp = 'Noto Sans Jp, sans-serif';
-const poppins = 'Poppins, sans-serif';
-
-export const fonts = {
-  ubuntuMono,
-  montserrat,
-  notoSansJp,
-  poppins,
-};
-
 // 色
 const blackLighten = '#4f4f4f';
 const gray = '#9e9e9e';

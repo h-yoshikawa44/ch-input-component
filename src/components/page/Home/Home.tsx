@@ -2,7 +2,8 @@ import { FC } from 'react';
 import { css } from '@emotion/react';
 import ComponentBox from '@/components/common/ComponentBox';
 import Input from '@/components/common/Input';
-import { breakPoint, fonts, colors } from '@/styles/constants';
+import { breakPoint, colors } from '@/styles/constants';
+import { poppins } from '@/styles/fonts';
 
 const Home: FC = () => {
   return (
@@ -115,7 +116,7 @@ const container = css`
 `;
 
 const pageTitle = css`
-  font-family: ${fonts.poppins};
+  font-family: ${poppins.style.fontFamily};
   font-size: 24px;
   font-weight: 500;
   line-height: 36px;

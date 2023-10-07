@@ -5,7 +5,8 @@ import { Mail } from '@emotion-icons/material-rounded/Mail';
 import { PermIdentity } from '@emotion-icons/material-rounded/PermIdentity';
 import { PhoneEnabled } from '@emotion-icons/material-rounded/PhoneEnabled';
 import { Lock } from '@emotion-icons/material-rounded/Lock';
-import { fonts, colors } from '@/styles/constants';
+import { colors } from '@/styles/constants';
+import { notoSansJp } from '@/styles/fonts';
 
 type InputType = 'text' | 'email' | 'password' | 'search' | 'tel' | 'url';
 type InputElement = 'input' | 'textarea';
@@ -163,7 +164,7 @@ const inputLabelError = css`
 const labelText = css`
   display: block;
   padding-bottom: 4px;
-  font-family: ${fonts.notoSansJp};
+  font-family: ${notoSansJp.style.fontFamily};
   font-size: 12px;
   font-weight: normal;
   line-height: 17px;
@@ -255,7 +256,7 @@ const icon = (position: IconPosition) => {
 
 const inputBase = css`
   width: 100%;
-  font-family: ${fonts.notoSansJp};
+  font-family: ${notoSansJp.style.fontFamily};
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
@@ -273,7 +274,7 @@ const inputBase = css`
 const helperTextBase = css`
   display: block;
   padding-top: 4px;
-  font-family: ${fonts.notoSansJp};
+  font-family: ${notoSansJp.style.fontFamily};
   font-size: 10px;
   font-weight: normal;
   line-height: 14px;
