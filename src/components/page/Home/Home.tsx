@@ -133,8 +133,7 @@ const inputRow = (column: number) => {
   return css`
     display: grid;
     grid-template-columns: repeat(${column}, max-content);
-    grid-row-gap: 45px;
-    grid-column-gap: 64px;
+    grid-gap: 45px 64px;
 
     @media (max-width: ${breakPoint.md - 1}px) {
       grid-template-columns: repeat(auto-fill, minmax(200px, max-content));
