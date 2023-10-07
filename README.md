@@ -49,7 +49,7 @@ Since it was created as a component for text input, the type of input element is
 <!-- This section should list any major frameworks that you built your project using. Here are a few examples.-->
 
 Base
-- [Node.js](https://nodejs.org/)：14.19.0
+- [Node.js](https://nodejs.org/)：20.8.0
 - [TypeScript](https://www.typescriptlang.org/)：4.6.2
 - [React](https://reactjs.org/)：17.0.2
 - [Next.js](https://nextjs.org/)：12.1.0

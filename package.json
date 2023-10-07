@@ -53,8 +53,7 @@
     "typesync": "^0.8.0"
   },
   "volta": {
-    "node": "14.19.0",
-    "yarn": "1.22.17"
+    "node": "20.8.0"
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged"
