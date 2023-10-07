@@ -1,8 +1,8 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import Layout from '@/components/common/Layout';
 import Home from './Home';
 
-const HomePage: VFC = () => {
+const HomePage: FC = () => {
   return (
     <Layout>
       <Home />

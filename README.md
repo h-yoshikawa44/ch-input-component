@@ -49,14 +49,15 @@ Since it was created as a component for text input, the type of input element is
 <!-- This section should list any major frameworks that you built your project using. Here are a few examples.-->
 
 Base
-- [Node.js](https://nodejs.org/)：14.19.0
-- [TypeScript](https://www.typescriptlang.org/)：4.6.2
-- [React](https://reactjs.org/)：17.0.2
-- [Next.js](https://nextjs.org/)：12.1.0
+- [Node.js](https://nodejs.org/)：20.8.0
+- [TypeScript](https://www.typescriptlang.org/)：5.2.2
+- [React](https://reactjs.org/)：18.2.0
+- [Next.js](https://nextjs.org/)：13.5.4
 
 Other major libraries
 - [emotion](https://emotion.sh/)
 - [emotion-icons](https://emotion-icons.dev/)
+- [postcss-preset-env](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env)
 
 ## Features
 
@@ -109,19 +110,19 @@ type InputProps = (
 
 <!-- Example:  -->
 
-To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [yarn](https://yarnpkg.com/)) installed on your computer. From your command line:
+To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](https://www.npmjs.com/)) installed on your computer. From your command line:
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/h-yoshikawa44/input-component.git
+git clone https://github.com/h-yoshikawa44/input-component.git
 or
-$ git clone git@github.com:h-yoshikawa44/input-component.git
+git clone git@github.com:h-yoshikawa44/input-component.git
 
 # Install dependencies
-$ yarn install
+npm install
 
 # Run the app
-$ yarn dev
+npm run dev
 ```
 
 ## learned/improved

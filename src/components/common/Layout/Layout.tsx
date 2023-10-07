@@ -1,17 +1,21 @@
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 import Head from 'next/head';
 import { css } from '@emotion/react';
 import SideBar from '@/components/common/SideBar';
 import Footer from '@/components/common/Footer';
 
-const Layout: FC = ({ children }) => {
+type Props = {
+  children: ReactNode;
+};
+
+const Layout: FC<Props> = ({ children }) => {
   return (
     <div>
       <Head>
         <title>Input component</title>
         <meta
           name="description"
-          content="devChallenges.io - Input component | by h-yoshikawa44"
+          content="devChallenges.io(legacy) - Input component | by h-yoshikawa44"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -33,8 +37,8 @@ const globalLayout = css`
 
 const rightBlock = css`
   display: flex;
-  min-height: 100vh;
   flex-direction: column;
+  min-height: 100vh;
 `;
 
 const contents = css`

@@ -1,11 +1,12 @@
-import { VFC, ComponentPropsWithRef } from 'react';
+import { FC, ComponentPropsWithRef } from 'react';
 import { jsx, css } from '@emotion/react';
 import { Home } from '@emotion-icons/material-rounded/Home';
 import { Mail } from '@emotion-icons/material-rounded/Mail';
 import { PermIdentity } from '@emotion-icons/material-rounded/PermIdentity';
 import { PhoneEnabled } from '@emotion-icons/material-rounded/PhoneEnabled';
 import { Lock } from '@emotion-icons/material-rounded/Lock';
-import { fonts, colors } from '@/styles/constants';
+import { colors } from '@/styles/constants';
+import { notoSansJp } from '@/styles/fonts';
 
 type InputType = 'text' | 'email' | 'password' | 'search' | 'tel' | 'url';
 type InputElement = 'input' | 'textarea';
@@ -19,7 +20,7 @@ type IconProps = {
   position: IconPosition;
 };
 
-const Icon: VFC<IconProps> = ({ iconName, position }) => {
+const Icon: FC<IconProps> = ({ iconName, position }) => {
   const size = 16;
 
   return (
@@ -54,7 +55,7 @@ type InputProps = (
   endIcon?: IconName;
 };
 
-const Input: VFC<InputProps> = ({
+const Input: FC<InputProps> = ({
   type = 'text',
   multiline = false,
   row = multiline ? 4 : undefined,
@@ -97,7 +98,7 @@ const Input: VFC<InputProps> = ({
                 disabled: disabled,
                 ...props,
               },
-              value
+              value,
             )
           : jsx(input, {
               css: inputBase,
@@ -163,7 +164,7 @@ const inputLabelError = css`
 const labelText = css`
   display: block;
   padding-bottom: 4px;
-  font-family: ${fonts.notoSansJp};
+  font-family: ${notoSansJp.style.fontFamily};
   font-size: 12px;
   font-weight: normal;
   line-height: 17px;
@@ -174,7 +175,7 @@ const labelText = css`
 const inputControlBase = (
   inputElement: InputElement,
   color: Color,
-  disabled: boolean
+  disabled: boolean,
 ) => {
   return css`
     display: flex;
@@ -194,6 +195,7 @@ const inputControlBase = (
         ? ` 1px solid ${styleMap.colors.action.disabled}`
         : ` 1px solid ${styleMap.colors.action.hover}`};
     }
+
     &:focus-within {
       border: 1px solid ${styleMap.colors[color]};
     }
@@ -254,7 +256,7 @@ const icon = (position: IconPosition) => {
 
 const inputBase = css`
   width: 100%;
-  font-family: ${fonts.notoSansJp};
+  font-family: ${notoSansJp.style.fontFamily};
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
@@ -272,7 +274,7 @@ const inputBase = css`
 const helperTextBase = css`
   display: block;
   padding-top: 4px;
-  font-family: ${fonts.notoSansJp};
+  font-family: ${notoSansJp.style.fontFamily};
   font-size: 10px;
   font-weight: normal;
   line-height: 14px;

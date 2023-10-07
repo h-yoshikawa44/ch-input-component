@@ -1,11 +1,14 @@
-import { VFC } from 'react';
+import { FC, ComponentPropsWithRef } from 'react';
 import Image from 'next/image';
 import { css } from '@emotion/react';
-import { colors, fonts } from '@/styles/constants';
+import { breakPoint, colors } from '@/styles/constants';
+import { montserrat } from '@/styles/fonts';
 
-const Footer: VFC = () => {
+type Props = ComponentPropsWithRef<'footer'>;
+
+const Footer: FC<Props> = ({ ...props }) => {
   return (
-    <footer css={[footer, footerText]}>
+    <footer css={[footer, footerText]} {...props}>
       <span>
         created by <span css={name}>h-yoshikawa44</span> - devChallenges.io
         |&nbsp;
@@ -26,18 +29,30 @@ const Footer: VFC = () => {
 
 const footer = css`
   display: flex;
+  flex: 1;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100px;
+  padding: 2rem 0;
   border-top: 1px solid ${colors.whiteDarken};
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 const footerText = css`
-  font-family: ${fonts.montserrat};
+  font-family: ${montserrat.style.fontFamily};
   font-size: 14px;
   font-weight: 500;
   line-height: 17px;
+
+  @media (width < ${breakPoint.md}px) {
+    flex-direction: column;
+    justify-content: space-around;
+    height: 70px;
+  }
 `;
 
 const name = css`

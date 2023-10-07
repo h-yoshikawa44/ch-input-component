@@ -1,10 +1,11 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import { css } from '@emotion/react';
 import ComponentBox from '@/components/common/ComponentBox';
 import Input from '@/components/common/Input';
-import { breakPoint, fonts, colors } from '@/styles/constants';
+import { breakPoint, colors } from '@/styles/constants';
+import { poppins } from '@/styles/fonts';
 
-const Home: VFC = () => {
+const Home: FC = () => {
   return (
     <main css={main}>
       <div css={container}>
@@ -115,7 +116,7 @@ const container = css`
 `;
 
 const pageTitle = css`
-  font-family: ${fonts.poppins};
+  font-family: ${poppins.style.fontFamily};
   font-size: 24px;
   font-weight: 500;
   line-height: 36px;
@@ -132,10 +133,9 @@ const inputRow = (column: number) => {
   return css`
     display: grid;
     grid-template-columns: repeat(${column}, max-content);
-    grid-row-gap: 45px;
-    grid-column-gap: 64px;
+    grid-gap: 45px 64px;
 
-    @media (max-width: ${breakPoint.md - 1}px) {
+    @media (width < ${breakPoint.md}px) {
       grid-template-columns: repeat(auto-fill, minmax(200px, max-content));
     }
   `;
