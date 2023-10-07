@@ -182,7 +182,7 @@ const inputControlBase = (
     align-items: center;
     padding: ${inputElement === 'input' ? '0 12px' : '16px 12px'};
     background-color: ${disabled
-      ? stylemap.colors.action.disabledbackground
+      ? styleMap.colors.action.disabledBackground
       : colors.white};
     border: ${disabled
       ? ` 1px solid ${styleMap.colors.action.disabled}`
