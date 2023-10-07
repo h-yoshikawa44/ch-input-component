@@ -1,10 +1,10 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import { css } from '@emotion/react';
 import ComponentBox from '@/components/common/ComponentBox';
 import Input from '@/components/common/Input';
 import { breakPoint, fonts, colors } from '@/styles/constants';
 
-const Home: VFC = () => {
+const Home: FC = () => {
   return (
     <main css={main}>
       <div css={container}>

@@ -1,4 +1,4 @@
-import { VFC, ComponentPropsWithRef } from 'react';
+import { FC, ComponentPropsWithRef } from 'react';
 import { css } from '@emotion/react';
 import { fonts, colors } from '@/styles/constants';
 
@@ -7,7 +7,7 @@ type Props = ComponentPropsWithRef<'li'> & {
   selected?: boolean;
 };
 
-const SideBarItem: VFC<Props> = ({ text, selected = false }) => {
+const SideBarItem: FC<Props> = ({ text, selected = false }) => {
   return <li css={sideBarItem(selected)}>{text}</li>;
 };
 

@@ -1,9 +1,9 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import Image from 'next/image';
 import { css } from '@emotion/react';
 import { colors, fonts } from '@/styles/constants';
 
-const Footer: VFC = () => {
+const Footer: FC = () => {
   return (
     <footer css={[footer, footerText]}>
       <span>

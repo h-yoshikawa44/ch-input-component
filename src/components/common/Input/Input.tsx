@@ -1,4 +1,4 @@
-import { VFC, ComponentPropsWithRef } from 'react';
+import { FC, ComponentPropsWithRef } from 'react';
 import { jsx, css } from '@emotion/react';
 import { Home } from '@emotion-icons/material-rounded/Home';
 import { Mail } from '@emotion-icons/material-rounded/Mail';
@@ -19,7 +19,7 @@ type IconProps = {
   position: IconPosition;
 };
 
-const Icon: VFC<IconProps> = ({ iconName, position }) => {
+const Icon: FC<IconProps> = ({ iconName, position }) => {
   const size = 16;
 
   return (
@@ -54,7 +54,7 @@ type InputProps = (
   endIcon?: IconName;
 };
 
-const Input: VFC<InputProps> = ({
+const Input: FC<InputProps> = ({
   type = 'text',
   multiline = false,
   row = multiline ? 4 : undefined,
@@ -194,6 +194,7 @@ const inputControlBase = (
         ? ` 1px solid ${styleMap.colors.action.disabled}`
         : ` 1px solid ${styleMap.colors.action.hover}`};
     }
+
     &:focus-within {
       border: 1px solid ${styleMap.colors[color]};
     }
