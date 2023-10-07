@@ -98,7 +98,7 @@ const Input: FC<InputProps> = ({
                 disabled: disabled,
                 ...props,
               },
-              value
+              value,
             )
           : jsx(input, {
               css: inputBase,
@@ -175,14 +175,14 @@ const labelText = css`
 const inputControlBase = (
   inputElement: InputElement,
   color: Color,
-  disabled: boolean
+  disabled: boolean,
 ) => {
   return css`
     display: flex;
     align-items: center;
     padding: ${inputElement === 'input' ? '0 12px' : '16px 12px'};
     background-color: ${disabled
-      ? styleMap.colors.action.disabledBackground
+      ? stylemap.colors.action.disabledbackground
       : colors.white};
     border: ${disabled
       ? ` 1px solid ${styleMap.colors.action.disabled}`
