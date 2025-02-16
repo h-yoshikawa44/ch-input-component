@@ -17,8 +17,7 @@ const ComponentBox: FC<Props> = ({ title, component }) => {
 };
 
 const subTitle = css`
-  margin-block-start: 0;
-  margin-block-end: 16px;
+  margin-block: 0 16px;
   font-family: ${ubuntuMono.style.fontFamily};
   font-size: 12px;
   font-weight: normal;

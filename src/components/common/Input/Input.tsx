@@ -263,8 +263,8 @@ const inputBase = css`
   color: ${styleMap.colors.text.primary};
   pointer-events: auto;
   resize: none;
-  border: none;
   outline: none;
+  border: none;
 
   &::placeholder {
     color: ${styleMap.colors.text.caption};
