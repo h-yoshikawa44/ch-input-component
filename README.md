@@ -3,7 +3,7 @@
 <h1 align="center">Input component</h1>
 
 <div align="center">
-   Solution for a challenge from  <a href="http://legacy.devchallenges.io" target="_blank">Devchallenges.io</a>.
+   Solution for a challenge from Devchallenges.io.
 </div>
 
 <div align="center">
@@ -11,16 +11,11 @@
     <a href="https://ch-input-component-h-yoshikawa44.vercel.app/">
       Demo
     </a>
-    <span> | </span>
-    <a href="https://legacy.devchallenges.io/solutions/ClokxKDirrSdDyCt8D0D">
-      Solution
-    </a>
-    <span> | </span>
-    <a href="https://legacy.devchallenges.io/challenges/TSqutYM4c5WtluM7QzGp">
-      Challenge
-    </a>
   </h3>
 </div>
+
+*The site is now closed, but this assignment was originally posted at `https://legacy.devchallenges.io/solutions/ClokxKDirrSdDyCt8D0D`.  
+（My assignment submission page at the time: `https://legacy.devchallenges.io/challenges/TSqutYM4c5WtluM7QzGp`.）
 
 <!-- TABLE OF CONTENTS -->
 
@@ -55,15 +50,15 @@ Base
 - [Next.js](https://nextjs.org/)：15.1.7
 
 Other major libraries
+- [postcss-preset-env](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env)
 - [emotion](https://emotion.sh/)
 - [emotion-icons](https://emotion-icons.dev/)
-- [postcss-preset-env](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env)
 
 ## Features
 
 <!-- List the features of your application or follow the template. Don't share the figma file here :) -->
 
-This application/site was created as a submission to a [DevChallenges](https://legacy.devchallenges.io/challenges) challenge. The [challenge](https://legacy.devchallenges.io/challenges/TSqutYM4c5WtluM7QzGp) was to build an application to complete the given user stories.
+This application/site was created as a submission to a DevChallenges challenge. The challenge was to build an application to complete the given user stories.
 
 - [x] User story: I can see error state
 - [x] User story: I can choose to disable input
@@ -143,7 +138,7 @@ npm run dev
 
 ## Contact
 
-- Website：[h-yoshikawa44.com](https://h-yoshikawa44.com)
-- GitHub：[@h-yoshikawa44](https://github.com/h-yoshikawa44)
-- Twitter：[@yoshi44_lion](https://twitter.com/yoshi44_lion)
+- Website: [h-yoshikawa44.com](https://h-yoshikawa44.com)
+- GitHub: [@h-yoshikawa44](https://github.com/h-yoshikawa44)
+- X: [@yoshi44_lion](https://x.com/yoshi44_lion)
 
