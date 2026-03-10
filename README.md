@@ -44,10 +44,10 @@ Since it was created as a component for text input, the type of input element is
 <!-- This section should list any major frameworks that you built your project using. Here are a few examples.-->
 
 Base
-- [Node.js](https://nodejs.org/)：22.13.1
-- [TypeScript](https://www.typescriptlang.org/)：5.7.3
-- [React](https://reactjs.org/)：19.0.0
-- [Next.js](https://nextjs.org/)：15.1.7
+- [Node.js](https://nodejs.org/)：24.14.0
+- [TypeScript](https://www.typescriptlang.org/)：5.9.3
+- [React](https://reactjs.org/)：19.2.4
+- [Next.js](https://nextjs.org/)：16.1.6
 
 Other major libraries
 - [postcss-preset-env](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env)
