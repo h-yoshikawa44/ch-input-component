@@ -45,7 +45,7 @@ Since it was created as a component for text input, the type of input element is
 
 Base
 - [Node.js](https://nodejs.org/)：24.14.0
-- [TypeScript](https://www.typescriptlang.org/)：5.7.3
+- [TypeScript](https://www.typescriptlang.org/)：5.9.3
 - [React](https://reactjs.org/)：19.2.4
 - [Next.js](https://nextjs.org/)：16.1.6
 
