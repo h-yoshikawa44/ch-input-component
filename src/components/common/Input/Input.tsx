@@ -181,19 +181,23 @@ const inputControlBase = (
     display: flex;
     align-items: center;
     padding: ${inputElement === 'input' ? '0 12px' : '16px 12px'};
-    background-color: ${disabled
-      ? styleMap.colors.action.disabledBackground
-      : colors.white};
-    border: ${disabled
-      ? ` 1px solid ${styleMap.colors.action.disabled}`
-      : ` 1px solid ${styleMap.colors.default}`};
+    background-color: ${
+      disabled ? styleMap.colors.action.disabledBackground : colors.white
+    };
+    border: ${
+      disabled
+        ? ` 1px solid ${styleMap.colors.action.disabled}`
+        : ` 1px solid ${styleMap.colors.default}`
+    };
     border-radius: 8px;
     transition: border 0.3s;
 
     &:hover {
-      border: ${disabled
-        ? ` 1px solid ${styleMap.colors.action.disabled}`
-        : ` 1px solid ${styleMap.colors.action.hover}`};
+      border: ${
+        disabled
+          ? ` 1px solid ${styleMap.colors.action.disabled}`
+          : ` 1px solid ${styleMap.colors.action.hover}`
+      };
     }
 
     &:focus-within {
